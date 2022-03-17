@@ -1,3 +1,5 @@
+//RAFAEL MONCLOVA SUANO
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -23,23 +25,29 @@ public class EmpresaAlquiler {
         
         System.out.println("introduce el tipo de Vehículo");
         String nTipoVehiculo =SC.nextLine();  
-               
-       vehiculoAlquiler=new Vehiculo(nTipoVehiculo);
+              
+        //Segun el tipo de vehiculo que indiquemos, se creará coche, moto u otro(vehiculo por defecto)
+        switch (nTipoVehiculo){
+            
+            case "coche":
+                vehiculoAlquiler=new Coche();
+            break;
+            case "moto":
+                vehiculoAlquiler=new Moto();
+            break;
+            default:
+                vehiculoAlquiler=new Vehiculo();
+            break;    
+        }
+        
+        
               
         System.out.println("introduce el número de horas");
         int horas =SC.nextInt();
-        int coste=0;        
-        switch(nTipoVehiculo) {
-			case "coche":
-				 coste =60*horas;
-                                break;
-			case "moto":
-				coste =15*horas;
-                                break;
-                        default:
-                            coste =10*horas;
-        }
-             
+        int coste=0;  
+        //El metodo calculaPrecio() realiza el calculo dependiendo del tipo de vehiculo automaticamente
+        coste = vehiculoAlquiler.calculaPrecio() * horas;
+           
         vehiculoAlquiler.imprimir_extendido();
         System.out.println("El coste es "+coste);
     }

@@ -4,71 +4,41 @@
  * and open the template in the editor.
  */
 package empresaalquiler;
-
+//RAFAEL MONCLOVA SUANO
 /**
  *
  * @author ismae
  */
 public class Vehiculo {
-    private String tipo;
+    //Los tipos de vehículo serán subclases de la clase vehículo(SWITCH y LONG CLASS)
+    
     //por defecto los vehículos son uniplaza excepto que sean coches o motos
-    private int plazas;
-Vehiculo(){}
-Vehiculo(String Ntipo){
-  tipo=Ntipo;
-     switch(Ntipo) {
-	case "coche":
-             plazas=5;
-             break;
-	case "moto":
-            plazas=2;   
-            break;
-        default:
-            plazas=1;
-        }
- 
-   }
-public String getTipo() {
-    return tipo;
+    protected int plazas;
+
+//EL vehiculo por defecto tendrá 1 plaza    
+public Vehiculo(){
+    plazas = 1;
 }
-public void setTipo(String Ntipo) {
-    this.tipo = Ntipo;
-   switch(Ntipo) {
-	case "coche":
-            plazas=5;
-            break;
-	case "moto":
-             plazas=2;   
-             break;
-        default:
-              plazas=1;
-        }
-}
+
+
 public int getPlazas() {
 return plazas;
 }
 public void imprimir_Basico(){
-System.out.print("TIPO");   
-System.out.print(tipo);
+
 System.out.print("PLAZAS");  
 System.out.print(plazas);
 }
+
+//Cada clase hija reescribe el metodo (SWITCH)
+public int calculaPrecio(){
+    return 10;
+}
+
 public void imprimir_extendido(){
-System.out.print("TIPO");   
-System.out.print(tipo);
-System.out.print("PLAZAS");  
-System.out.print(plazas);
-int precio;
-     switch(tipo) {
-        case "coche":
-            precio=60;
-             break;
-	case "moto":
-            precio=15;    
-            break;
-        default:
-            precio=10;
-        }
+//Podemos reutilizar el imprimir_basico() (CÓDIGO DUPLICADO y LONG METHOD)
+    imprimir_Basico();
+    System.out.println("PRECIO: "+calculaPrecio());
 
 }
 
